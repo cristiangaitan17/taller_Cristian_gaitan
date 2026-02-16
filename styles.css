@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+:root {
+    --bg-main: #1a1c23;
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --accent: #00d2ff;
+    --secondary: #9d50bb;
+    --text-white: #ffffff;
+    --text-dim: #a0a0a0;
+    --glass-border: rgba(255, 255, 255, 0.12);
+}
+
+body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-white);
+    background-color: var(--bg-main);
+    overflow-x: hidden;
+}
+
+/* FONDO ANIMADO GRADIENTE */
+.animated-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(125deg, #1a1c23, #232a3b, #1a1c23, #2d1b3d);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.main-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* HERO SECTION */
+.profile-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 32px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.img-box {
+    width: 150px; height: 150px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+}
+
+.img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.role { color: var(--text-dim); font-size: 1.1rem; margin-top: 5px; }
+
+/* BENTO GRID LAYOUT */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.bento-item {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
+    padding: 30px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bento-item:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.about { grid-column: span 2; }
+.instructor-card { 
+    grid-column: span 1; 
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(157, 80, 187, 0.1));
+}
+.skills { grid-column: span 1; }
+.studies { grid-row: span 2; }
+.video-link-card { grid-column: span 2; }
+
+/* SKILLS */
+.skills-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.skill-icon {
+    font-size: 1.5rem;
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 18px;
+    text-align: center;
+    color: var(--accent);
+}
+
+/* LISTAS */
+h3 { color: var(--accent); margin-top: 0; font-size: 1.3rem; }
+.mentor-list { list-style: none; padding: 0; font-size: 0.9rem; }
+.mentor-list li { margin-bottom: 8px; }
+.mentor-list i { color: var(--accent); margin-right: 10px; }
+
+.personal-list { list-style: none; padding: 0; }
+.personal-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+.personal-list i { color: var(--secondary); }
+
+.hobbies-line {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    font-size: 1.4rem;
+    color: var(--text-dim);
+}
+
+/* VIDEO INTERACTIVO */
+.video-hint { font-size: 0.8rem; color: var(--accent); margin-bottom: 15px; }
+.video-container-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--glass-border);
+}
+
+.video-thumbnail { width: 100%; display: block; transition: 0.5s; }
+
+.image-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 2; opacity: 0; transition: 0.3s;
+}
+
+.image-overlay i { font-size: 3rem; color: var(--accent); }
+
+.video-container-link:hover .image-overlay { opacity: 1; }
+.video-container-link:hover .video-thumbnail { transform: scale(1.05); filter: blur(2px); }
+
+.main-footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 0.8rem; }
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .content-grid { grid-template-columns: 1fr; }
+    .about, .instructor-card, .skills, .studies, .video-link-card { grid-column: span 1; }
+    .profile-card { flex-direction: column; text-align: center; }
+}
