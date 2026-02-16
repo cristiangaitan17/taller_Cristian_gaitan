@@ -47,4 +47,5 @@ Línea para generar conflicto con desarrollador (opcional para pruebas de Git).
 
 1. Clonar el repositorio:
    ```bash
-   git clone [https://github.com/cristiangaitan17/taller_Cristian_gaitan.git](https://github.com/cristiangaitan17/taller_Cristian_gaitan.git)
+   git clone https://github.com/cristiangaitan17/taller_Cristian_gaitan
+   
